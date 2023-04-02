@@ -1,0 +1,56 @@
+su level14
+Password: 2A31L79asukciNyi8uppkEuSx
+
+$ gdb /bin/getflag
+(gdb) run
+Starting program: /bin/getflag
+You should not reverse this
+[Inferior 1 (process 3871) exited with code 01]
+Реверс с GDB защищен...
+
+(gdb) disas main
+...
+0x08048989 <+67>:	call   0x8048540 <ptrace@plt>
+...
+0x08048afd <+439>:	call   0x80484b0 <getuid@plt>
+Первый системный вызов это ptrace, именно он блокирует реверс
+
+Обходим ptrace
+(gdb) catch syscall ptrace
+Catchpoint 1 (syscall 'ptrace' [26])
+
+(gdb) commands 1
+Type commands for breakpoint(s) 1, one per line.
+End with a line saying just "end".
+> set ($eax) = 0
+> continue
+> end
+
+Мы также видим, что он использует getuid
+Необходимо подставить идентификатор flag14
+
+В другом терминале вводим
+id flag14
+uid=3014(flag14) gid=3014(flag14) groups=3014(flag14),1001(flag)
+
+Изменим возвращаемое значение getuid на флаг14, как и для уровня 13.
+Ставим точку останова после вызова <getuid@plt>
+(gdb) break getuid
+(gdb) run
+Starting program: /bin/getflag
+Catchpoint 1 (call to syscall ptrace), 0xb7fdd428 in __kernel_vsyscall ()
+Catchpoint 1 (returned from syscall ptrace), 0xb7fdd428 in __kernel_vsyscall ()
+Breakpoint 2, 0xb7ee4cc0 in getuid () from /lib/i386-linux-gnu/libc.so.6
+
+(gdb) step 
+(gdb) set $eax=3014
+(gdb) step
+Single stepping until exit from function main,
+which has no line number information.
+Check flag.Here is your token : 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
+0xb7e454d3 in __libc_start_main () from /lib/i386-linux-gnu/libc.so.6
+(gdb) quit
+level14@SnowCrash:~$ su flag14
+Password:7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
+Congratulation. Type getflag to get the key and send it to me the owner of this livecd :)
+getflag

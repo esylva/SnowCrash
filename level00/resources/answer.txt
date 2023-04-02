@@ -1,0 +1,18 @@
+ssh level00@IP -p 4242
+Password: level00
+
+https://elearning.intra.42.fr/notions/snow-crash/subnotions/snow-crash/videos/snow-crash
+FIND this first file who can run only as flag00
+
+
+ 
+
+ -> cdiiddwpgswtgt
+
+// cat/rofs/usr/sbin/john
+
+https://www.dcode.fr/chiffre-affine -> 	nottoohardhere
+
+su flag00
+Password: nottoohardhere
+getflag

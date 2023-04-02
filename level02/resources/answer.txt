@@ -1,0 +1,51 @@
+su level02
+Password: f2av5il02puano7naaf6adaaf
+
+ls -la -> level02.pcap
+
+в другом терминале (на виртуальной машине)
+scp -P 4242 level02@192.168.1.5:/home/user/level02/level02.pcap file.pcap
+
+или через 
+cat level02.pcap | base64 -w 0; echo
+Копируешь кодированную строку, отправляешься в терминал куда нужно передать файл
+echo -n 'сюда вставляешь' | base64 -d > file.pcap
+
+Отправляем файл на 
+https://www.cloudshark.org/captures (сначала поток, потом гекс - точки меняются на 7F)
+
+Password: 
+f
+t
+_
+w
+a
+n
+d
+r
+.
+.
+.
+N
+D
+R
+e
+l
+.
+L
+0
+L
+
+7f -> ascii del -> ft_waNDReL0L
+
+Или устанавливаем tshark
+	sudo apt install tshark
+	chmod 777 file.pcap
+	tshark -r file.pcap
+	tshark -r file.pcap -z"follow,tcp,ascii,0"
+	tshark -r file.pcap -z"follow,tcp,hex,0"
+
+
+su flag02 
+Password: ft_waNDReL0L
+getflag
